@@ -1,1 +1,22 @@
+    server:
+      http_listen_port: 9080
+      grpc_listen_port: 0
+    
+    positions:
+      filename: /tmp/positions.yaml
+    
+    clients:
+      - url: http://localhost:3100/loki/api/v1/push
+    
+    scrape_configs:
+      - job_name: ipsec-logs
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: ipsec
+              host: vpn-server
+              __path__: /var/log/secure
 
+
+Ensure /var/log/secure exists and includes strongSwan logs. The host label can be dynamically templated for per-client identification.
