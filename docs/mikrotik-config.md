@@ -4,11 +4,11 @@ This document provides a step-by-step guide for configuring MikroTik RouterOS de
 
 Prerequisites
 
-MikroTik device running RouterOS version 6.45 or later
+-MikroTik device running RouterOS version 6.45 or later
 
-VPN server already configured (refer to docs/ipsec-setup.md)
+-VPN server already configured (refer to ``)
 
-Pre-Shared Key provided by the VPN administrator
+-Pre-Shared Key provided by the VPN administrator
 
   Step 1: Create an IPsec Proposal
 
