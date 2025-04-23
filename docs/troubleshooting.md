@@ -14,6 +14,8 @@
     
     Fix: Run ipsec statusall and check for errors like no proposal chosen
 
+
+
     Problem: Security Association Drops Immediately
     
     Fix: Verify dpdaction=clear and dpddelay, dpdtimeout values
