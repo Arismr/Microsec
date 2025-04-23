@@ -43,8 +43,8 @@ This script installs and configures strongSwan, Promtail, Loki, and Grafana in o
 ----------------------------------------------------------------------------------
 **Usage**
 ----------------------------------------------------------------------------------
-chmod +x install-stack.sh
-./install-stack.sh
+     chmod +x install-stack.sh
+     ./install-stack.sh
 ----------------------------------------------------------------------------------
 After running this script, configure each service by placing the appropriate files from configs/ into place and enabling their respective systemd services.
 
