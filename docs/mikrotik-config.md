@@ -10,89 +10,89 @@ VPN server already configured (refer to docs/ipsec-setup.md)
 
 Pre-Shared Key provided by the VPN administrator
 
-Step 1: Create an IPsec Proposal
+  Step 1: Create an IPsec Proposal
 
 This defines the encryption and authentication algorithms to use.
 
-  /ip ipsec proposal add \
-      name=strongswan-proposal \
-      auth-algorithms=sha256 \
-      enc-algorithms=aes-256-cbc \
-      pfs-group=modp1024
+    /ip ipsec proposal add \
+        name=strongswan-proposal \
+        auth-algorithms=sha256 \
+        enc-algorithms=aes-256-cbc \
+        pfs-group=modp1024
 
-Step 2: Define the VPN Peer
+  Step 2: Define the VPN Peer
 
 This tells the MikroTik where the VPN server is located and what protocol to use.
 
-  /ip ipsec peer add \
-      name=vpn-peer \
-      address=<vpn-server-ip> \
-      exchange-mode=ike2 \
-      secret="<shared-key>" \
-      send-initial-contact=yes \
-      policy-template-group=default \
-      proposal-check=obey \
-      nat-traversal=yes
-  
-  Important: nat-traversal=yes allows connections from MikroTik devices behind NAT. It also helps support scalability when clients use overlapping or identical subnets.
+    /ip ipsec peer add \
+        name=vpn-peer \
+        address=<vpn-server-ip> \
+        exchange-mode=ike2 \
+        secret="<shared-key>" \
+        send-initial-contact=yes \
+        policy-template-group=default \
+        proposal-check=obey \
+        nat-traversal=yes
+    
+    Important: nat-traversal=yes allows connections from MikroTik devices behind NAT. It also helps support scalability when clients use overlapping or identical subnets.
 
 Replace <vpn-server-ip> with the IP of the VPN server and <shared-key> with the actual shared secret.
 
-Step 3: Create Identity
+  Step 3: Create Identity
 
 This defines how the MikroTik authenticates to the VPN server.
 
-  /ip ipsec identity add \
-      peer=vpn-peer \
-      auth-method=pre-shared-key \
-      secret="<shared-key>"
+    /ip ipsec identity add \
+        peer=vpn-peer \
+        auth-method=pre-shared-key \
+        secret="<shared-key>"
 
-Step 4: Define Policy Group (Optional but Recommended)
+  Step 4: Define Policy Group (Optional but Recommended)
 
 Used to group multiple dynamic policies.
 
-  /ip ipsec policy group add name=default
+    /ip ipsec policy group add name=default
 
-Step 5: Add IPsec Policy
+  Step 5: Add IPsec Policy
 
 This controls what traffic gets encrypted.
 
-  /ip ipsec policy add \
-      src-address=0.0.0.0/0 \
-      dst-address=<vpn-server-subnet> \
-      sa-dst-address=<vpn-server-ip> \
-      tunnel=yes \
-      action=encrypt \
-      level=require \
-      proposal=strongswan-proposal
+    /ip ipsec policy add \
+        src-address=0.0.0.0/0 \
+        dst-address=<vpn-server-subnet> \
+        sa-dst-address=<vpn-server-ip> \
+        tunnel=yes \
+        action=encrypt \
+        level=require \
+        proposal=strongswan-proposal
 
 Replace <vpn-server-subnet> with the internal subnet behind the VPN server.
 
-Step 6: Add NAT Bypass Rule
+  Step 6: Add NAT Bypass Rule
 
 This prevents the router from NAT'ing VPN traffic.
+  
+    /ip firewall nat add \
+        chain=srcnat \
+        dst-address=<vpn-server-subnet> \
+        action=accept
 
-  /ip firewall nat add \
-      chain=srcnat \
-      dst-address=<vpn-server-subnet> \
-      action=accept
-
-Step 7: Enable IPsec
+  Step 7: Enable IPsec
 
 Ensure the IPsec service is running:
 
-/ip ipsec enable
+    /ip ipsec enable
 
-Step 8: Verify Tunnel Status
+  Step 8: Verify Tunnel Status
 
 Monitor the tunnel connection:
-
-/ip ipsec active-peers print
-/ip ipsec installed-sa print
+    
+    /ip ipsec active-peers print
+    /ip ipsec installed-sa print
 
 You should see a successful connection with Security Associations (SAs) established.
 
-Notes
+  Notes
 
 Ensure system clock is synced via NTP to avoid IKEv2 failures
 
