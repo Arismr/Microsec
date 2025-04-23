@@ -22,6 +22,8 @@
     
     Fix: Ensure client-side NAT rule is bypassing VPN traffic
 
+
+
     Problem: Overlapping or Conflicting Subnets
     
     Fix: Use nat-traversal=yes in MikroTik peer config
@@ -38,6 +40,8 @@
     
     Fix: Ensure RouterOS time is synced using NTP
 
+
+
     Problem: Unexpected Disconnects
     
     Fix: Lower the rekey interval
@@ -53,6 +57,8 @@
     Fix: Confirm file paths in /etc/promtail/promtail-config.yml
     
     Fix: Ensure target log file (e.g. /var/log/secure) exists and is updating
+
+
 
     Problem: Loki Not Receiving Logs
     
@@ -72,11 +78,15 @@
     
     Fix: Check for missing job or host labels in log entries
 
+
+
     Problem: Alert Not Firing
     
     Fix: Check if alert rule has a compatible query (count_over_time)
     
     Fix: Ensure contact point and notification policy are linked
+
+
 
     Problem: Dashboards Reset or Lost
     
