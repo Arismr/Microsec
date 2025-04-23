@@ -20,22 +20,39 @@ config setup
     charondebug="ike 2, knl 2, cfg 2"
 
 conn mikrotik-dynamic
+
     keyexchange=ikev2
+
     ike=aes256-sha256-modp1024!
+
     esp=aes256-sha256!
+
     dpdaction=clear
+
     dpddelay=30s
+
     dpdtimeout=120s
+
     rekey=no
+
     left=<server-public-ip>
+
     leftid=<server-public-ip>
+
     leftsubnet=<internal-subnet>
+
     right=%any
+
     rightid=%any
+
     rightsubnet=%any
+
     authby=secret
+
     auto=add
+
     keyingtries=%forever
+
     fragmentation=yes
 
 Explanation:
