@@ -1,25 +1,144 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# System files
+*.log
+*.bak
+*.swp
+*.tmp
+*.pid
+*.seed
+*.old
 
-# Test binary, built with `go test -c`
-*.test
+# SSH and VPN credentials
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+*.ovpn
+*.secrets
+*.psk
+*.conf
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-# Go workspace file
-go.work
-go.work.sum
-
-# env file
+# Configuration files with sensitive data
 .env
+.env.*
+*.env
+*.env.*
+*.ini
+*.cfg
+*.conf
+
+# Ansible/Vagrant/Deployment artifacts
+*.retry
+*.vault
+*.vault_pass
+*.tar.gz
+*.zip
+*.tgz
+*.gz
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.eggs/
+
+# Node artifacts
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git-specific
+.git-credentials
+.gitconfig
+.gitignore
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Logs and monitoring data
+logs/
+*.log
+*.out
+*.err
+*.gz
+*.zip
+
+# Backup files
+*.bak
+*.old
+*.orig
+*.save
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.swn
+*.swns
+
+# Test and coverage files
+coverage/
+*.cover
+*.coverage
+*.lcov
+*.lcov.info
+.nyc_output/
+
+# Docker files
+docker-compose.override.yml
+.env.docker
+.docker/
+
+# Systemd service files
+*.service
+*.timer
+
+# Grafana provisioning files
+provisioning/
+dashboards/
+datasources/
+
+# Loki and Promtail config files
+loki-config.yml
+promtail-config.yml
+
+# Custom scripts
+rotate-logs.sh
+parse-logs.py
+install-stack.sh
+
+# VPN status dashboard
+vpn-status-dashboard.json
+
+# Documentation
+*.doc
+*.docx
+*.pdf
+*.md
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Miscellaneous
+*.bak
+*.tmp
+*.swp
+*.swo
+*.swn
+*.swns
