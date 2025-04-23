@@ -1,1 +1,1 @@
-This project is a personal open-source project and not associated with any company. All configurations and scripts are generalized and intended to be used as a template for building scalable IPsec VPN systems. No proprietary company infrastructure, data, or systems are included in this project.
+This project is a personal open-source project and not associated with any company. All configurations and scripts are generalized and intended to be used as a template for building scalable IPsec VPN systems.
