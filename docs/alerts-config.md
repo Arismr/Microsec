@@ -1,8 +1,8 @@
-***Overview**
+**Overview**
 
 This guide details how to configure alerting in Grafana using Loki as the data source. Alerts notify administrators of VPN failures, tunnel instability, configuration mismatches, and inactivity. Proper alerting improves response time and service reliability.
 
-###Step 1: Understand Loki-Based Alerting in Grafana
+**Step 1: Understand Loki-Based Alerting in Grafana**
 
 Grafana’s alert engine supports LogQL expressions from Loki, but only numeric expressions (like count_over_time) can trigger alerts.
 
@@ -14,7 +14,7 @@ Ensure that:
     
     Alert evaluation is set for 1m–5m intervals depending on sensitivity
 
-Step 2: Set Up Contact Points (Notifications)
+**Step 2: Set Up Contact Points (Notifications)**
 
     Go to Alerting > Contact points
     
@@ -26,7 +26,7 @@ Step 2: Set Up Contact Points (Notifications)
     
     Test the notification
 
-Step 3: Create Notification Policies
+**Step 3: Create Notification Policies**
 
     Go to Alerting > Notification policies
     
@@ -66,7 +66,7 @@ Step 3: Create Notification Policies
     
     Frequency: Every 5m
 
-Step 5: Link Alerts to Panels
+**Step 5: Link Alerts to Panels**
 
     Edit any relevant panel (e.g., “Tunnel Failures per 5m”)
     
@@ -78,7 +78,7 @@ Step 5: Link Alerts to Panels
     
     Link to a contact point and save
 
-Step 6: Test and Validate
+**Step 6: Test and Validate**
 
     Use logger or simulate VPN events to generate logs
     
@@ -88,7 +88,7 @@ Step 6: Test and Validate
     
     Check delivery to the correct contact point
 
-Step 7: Recommended Alert Hygiene
+**Step 7: Recommended Alert Hygiene**
 
     Do not over-alert (avoid alert fatigue)
     
@@ -100,7 +100,7 @@ Step 7: Recommended Alert Hygiene
     
     Use annotations in Grafana dashboards to correlate with time-based events
 
-Notes
+**Notes**
 
 Alerting works best with time-series queries that aggregate log data
 
